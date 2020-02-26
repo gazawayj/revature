@@ -15,7 +15,7 @@ namespace MediaWorld.Client
         private static void PlayAudio()
         {
           var ap = AudioPlayer.Instance;
-          ap.Play(new Song("Some Song Whose Title I can't Think Of"));
+          ap.Play(new Song());
         }
 
         private static void PlayVideo()
