@@ -1,8 +1,6 @@
-using System;
-using MediaWorld.Domain.Abstracts;
 using MediaWorld.Domain.Interfaces;
 
-namespace MediaWorld.Domain.Models
+namespace MediaWorld.Domain.Singletons
 {
   public class AudioPlayer : APlayer
   {

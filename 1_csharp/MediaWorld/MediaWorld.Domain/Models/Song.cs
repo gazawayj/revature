@@ -1,4 +1,6 @@
-namespace MediaWorld.Domain.Abstracts
+using MediaWorld.Domain.Abstracts;
+
+namespace MediaWorld.Domain.Models
 {
   public class Song : AMedia
   {

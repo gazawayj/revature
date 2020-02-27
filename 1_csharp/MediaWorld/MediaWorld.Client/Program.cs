@@ -1,5 +1,4 @@
-﻿using System;
-using MediaWorld.Domain.Abstracts;
+﻿using MediaWorld.Domain.Singletons;
 using MediaWorld.Domain.Models;
 
 namespace MediaWorld.Client
@@ -8,7 +7,6 @@ namespace MediaWorld.Client
     {
         private static void Main(string[] args)
         {
-            Program a = new Program();
             PlayAudio();
         }
 
@@ -16,6 +14,7 @@ namespace MediaWorld.Client
         {
           var ap = AudioPlayer.Instance;
           ap.Play(new Song());
+
         }
 
         private static void PlayVideo()
