@@ -21,11 +21,5 @@ namespace MediaWorld.Storage
         return _audioDictionary.Values.ToList() ?? new List<AMedia>();
       }
     }
-
-    public void AddSong(string _name)
-    {
-      System.Console.WriteLine("Song '{0}' added to playlist.", _name);
-      _audioDictionary.Add(_audioDictionary.Count+"", new Song(_name));
-    }
   }
 }

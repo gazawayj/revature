@@ -4,25 +4,48 @@ using MediaWorld.Storage.Adapters;
 using MediaWorld.Domain.Singletons;
 using MediaWorld.Storage;
 using MediaWorld.Storage.Repositories;
+using MediaWorld.Domain.Abstracts;
 
 namespace MediaWorld.Client
 {
     internal class Program
     {
+      private static readonly AudioRepository repo = new AudioRepository();
+
         private static void Main(string[] args)
         {
-            PlayAudio();
-            //FileAdapter.Write();
+            //PlayAudio();
+            PlayBook();
         }
 
+        private static void PlayBook()
+        {
+          var b = new Book();
+          //b.Read(HowToRead.Lower);
+          // b.ReadAction((string s) => { Console.WriteLine(s.ToLowerInvariant()); });
+          // b.ReadFunction((string s) => { Console.WriteLine(s.ToUpperInvariant()); return string.Empty; });
+          // b.ReadDelegate((string s) => { Console.WriteLine(s.ToLowerInvariant()); });
+
+          //event 
+          b.BookEvent += UseEvent;
+          b.Open();
+        }
+
+        public static void UseEvent(string s)
+        {
+          System.Console.WriteLine("we heard you");
+        }
+
+        private void UseCasingDelegate(string s)
+        {
+          System.Console.WriteLine(s);
+        }
+        
         private static void PlayAudio()
         {
+          var repo2 = new AudioRepositoryGeneric<Song>();
+          var repo3 = new AudioRepositoryGeneric<Book>();
           var ap = AudioPlayer.Instance;
-          //var ac = new AudioCollection();
-          var repo = new AudioRepository();
-
-          //Lazyily create some songs
-          //PropegateSomeSongs(ac);
 
           try 
           {
@@ -40,17 +63,6 @@ namespace MediaWorld.Client
             GC.Collect();
           }
         }
-
-    private static void PropegateSomeSongs(AudioCollection ac)
-    {
-        Random random = new Random();
-        int num = random.Next(0, 25);
-        for (int i = 0; i < num; i++)
-        {
-          //create some random strings
-          //create songs from them and add them to the audio collection
-        }
-    }
 
     private static void PlayVideo()
         {

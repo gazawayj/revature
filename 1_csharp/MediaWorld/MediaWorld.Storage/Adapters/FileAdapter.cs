@@ -10,24 +10,12 @@ namespace MediaWorld.Storage.Adapters
   {
     //literal string
     private static string path = @"../medialib.xml";
-    private static string pathw = @"../medialibWrite.xml";
     public static IEnumerable<AMedia> Read()
     {
       var reader = new StreamReader(path);
       //begin DE - serialization
-      var xml = new XmlSerializer(typeof(List<Song>));
-      var la = xml.Deserialize(reader) as List<Song>;
-      //have to cast to amedia
-      return la;
-    }
-
-    public static void Write()
-    {
-      var writer = new StreamWriter(pathw);
-      var xml = new XmlSerializer(typeof(List<AMedia>));
-      var lib = new List<AMedia>();
-      lib.Add(new Song("Please work"));
-      xml.Serialize(writer, lib);
+      var xml = new XmlSerializer(typeof(List<AMedia>), new []{typeof(Book), typeof(Song)});
+      return xml.Deserialize(reader) as List<AMedia>;
     }
   }
 }

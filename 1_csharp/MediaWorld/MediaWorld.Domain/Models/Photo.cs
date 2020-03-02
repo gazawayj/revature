@@ -1,6 +1,6 @@
 namespace MediaWorld.Domain.Abstracts
 {
-  public class Photo : AMedia
+  public class Photo : AVideo
   {
     
   }
